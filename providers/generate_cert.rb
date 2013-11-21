@@ -22,14 +22,14 @@ action :add do
   name = new_resource.name
   
   if new_resource.cookbook
-    cert_path = File.join(::File.dirname(__FILE__),
+    cert_path = ::File.join(::File.dirname(__FILE__),
       '..', '..', new_resource.cookbook, 'files', 'default', cert)
-    key_path = File.join(::File.dirname(__FILE__),
+    key_path = ::File.join(::File.dirname(__FILE__),
       '..', '..', new_resource.cookbook, 'files', 'default', key)
   else
-    cert_path = File.join(::File.dirname(__FILE__),
+    cert_path = ::File.join(::File.dirname(__FILE__),
       '..', 'files', 'default', cert)
-    key_path = File.join(::File.dirname(__FILE__),
+    key_path = ::File.join(::File.dirname(__FILE__),
       '..', 'files', 'default', key)
   end
   
