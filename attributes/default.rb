@@ -17,7 +17,8 @@
 # limitations under the License.
 #
 
-default[:openssl][:certs]   = "/etc/ssl/certs"
-default[:openssl][:keys]    = "/etc/ssl/keys"
-default[:openssl][:pems]    = "/etc/ssl/pems"
+default[:openssl][:dir]     = "/etc/ssl"
+default[:openssl][:certs]   = "#{openssl[:dir]}/certs"
+default[:openssl][:keys]    = "#{openssl[:dir]}/keys"
+default[:openssl][:pems]    = "#{openssl[:dir]}/pems"
 default[:openssl][:ssl_req] = "/C=US/ST=CA/L=San Francisco/O=Example/OU=Operations/CN=ssl_cert/emailAddress=ops@localhost"

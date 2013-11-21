@@ -34,12 +34,12 @@ action :add do
   end
   
   bash "Create SSL Certificates" do
-    cwd "/etc/ssl"
+    cwd node[:openssl][:dir]
     code <<-EOH
     umask 022
-    openssl genrsa 2048 > keys/#{key}
-    openssl req -subj "#{node[:openssl][:ssl_req]}" -new -x509 -nodes -sha1 -days 3650 -key keys/#{key} > certs/#{cert}
-    cat keys/#{key} certs/#{cert} > pems/#{name}.pem
+    openssl genrsa 2048 > #{node[:openssl][:keys]}/#{key}
+    openssl req -subj "#{node[:openssl][:ssl_req]}" -new -x509 -nodes -sha1 -days 3650 -key #{node[:openssl][:keys]}/#{key} > #{node[:openssl][:certs]}/#{cert}
+    cat #{node[:openssl][:keys]}/#{key} #{node[:openssl][:certs]}/#{cert} > #{node[:openssl][:pems]}/#{name}.pem
     EOH
     user "root"
     not_if {
