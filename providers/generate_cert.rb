@@ -33,7 +33,7 @@ action :add do
       '..', 'files', 'default', key)
   end
   
-  bash "Create SSL Certificates" do
+  bash "Create SSL Certificate for #{new_resource.name}" do
     cwd node[:openssl][:dir]
     code <<-EOH
     umask 022
