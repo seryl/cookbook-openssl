@@ -23,9 +23,9 @@ action :add do
   
   if new_resource.cookbook
     cert_path = File.join(File.dirname(__FILE__),
-      '..', '..', new_resource.cookbook, 'files', 'default', cert)
+      '..', '..', new_resource.cookbook.to_s, 'files', 'default', cert)
     key_path = File.join(File.dirname(__FILE__),
-      '..', '..', new_resource.cookbook, 'files', 'default', key)
+      '..', '..', new_resource.cookbook.to_s, 'files', 'default', key)
   else
     cert_path = File.join(File.dirname(__FILE__),
       '..', 'files', 'default', cert)
@@ -70,9 +70,9 @@ action :remove do
 end
 
 def cert
-  "#{new_resource.name}.crt"
+  "#{new_resource.name.to_s}.crt"
 end
 
 def key
-  "#{new_resource.name}.key"
+  "#{new_resource.name.to_s}.key"
 end
